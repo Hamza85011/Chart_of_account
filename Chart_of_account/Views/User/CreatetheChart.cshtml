@@ -1,0 +1,111 @@
+﻿@model Chart_of_account.Models.Combine_Model
+@{
+    ViewData["Title"] = "CreatetheChart";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.2s ease-in-out;
+        }
+
+        .form-control:focus {
+                border-color: #007bff;
+                outline: none;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top:20px;
+        }
+
+        .btn-primary:hover {
+                background-color: #0056b3;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create the Chart</h1>
+        <form asp-action="CreatetheChart">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AccountTitle" class="control-label">Account Title</label>
+                <input asp-for="AccountTitle" class="form-control" />
+                <span asp-validation-for="AccountTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccountClassId" class="control-label">Account Class Title</label>
+                <select id="ddl" asp-for="AccountClassId" asp-items="@ViewBag.List" class="form-control"></select>
+                <span asp-validation-for="AccountClassId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create Chart" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+   
+</body>
+</html>
+@section Scripts {
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#ddl").select2();
+        });
+    </script>
+}

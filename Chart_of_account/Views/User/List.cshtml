@@ -1,0 +1,7 @@
+﻿@model Chart_of_account.Models.AccountClass
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+@Html.DropDownListFor(model=>model.AccountClassId,ViewBag.List as SelectList)
